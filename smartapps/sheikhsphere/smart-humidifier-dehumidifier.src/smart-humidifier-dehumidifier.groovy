@@ -54,7 +54,11 @@ def installed() {
 
 def updated() {
 	unsubscribe()
-    unschedule()
+    try {
+        unschedule()
+    } catch (all) {
+        log.warn ("unschedule error")
+    }
     initialize()
 }
 
